@@ -3,9 +3,9 @@
 
 Hello, {{ user }}
 
-{% if latest_post_list %}
+{% if post_list %}
     <ul>
-    {% for article in latest_post_list %}
+    {% for article in post_list %}
         <li><a href="{% url 'main:post' article.id %}">{{ article.header }}</a></li>
     {% endfor %}
     </ul>
