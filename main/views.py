@@ -5,7 +5,10 @@ from .models import Article
 
 def index(request):
     latest_post_list = Article.objects.order_by('-pub_date')[:5]
-    context = {'latest_post_list': latest_post_list}
+    context = {
+        'latest_post_list': latest_post_list,
+        'user': request.user,
+    }
     return render(request, 'main/index.html', context)
 
 def post(request, post_id):
