@@ -1,0 +1,13 @@
+body {
+  background: white url('img/background.jpg') no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+.content {
+  border: 1px solid black;
+}
