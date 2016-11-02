@@ -1,7 +1,7 @@
 {% if latest_post_list %}
     <ul>
     {% for article in latest_post_list %}
-        <li><a href="/main/{{ article.id }}/">{{ article.header }}</a></li>
+        <li><a href="{% url 'main:post' article.id %}">{{ article.header }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
