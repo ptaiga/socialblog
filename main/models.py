@@ -8,3 +8,8 @@ class Article(models.Model):
     content = models.TextField()
     def __str__(self):
         return self.header
+
+class Subscriber(models.Model):
+    # http://djbook.ru/rel1.9/topics/auth/customizing.html#extending-the-existing-user-model
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    subscribe_list = models.CharField(max_length=10, validators=[])
