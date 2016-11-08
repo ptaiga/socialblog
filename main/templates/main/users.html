@@ -1,0 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+
+{% for user in user_list %}
+    <li>{{ user.id }}: {{ user.username }} - {{ user.subscriber.subscribe_list }}</li>
+{% endfor %}

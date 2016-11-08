@@ -1,7 +1,11 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
 
-Hello, {{ user }}
+Hello, {{ user }}. 
+Your subscribe: 
+{% for user in users %}
+{{ user.username }},
+{% endfor %}
 
 {% if post_list %}
     <ul>
@@ -12,3 +16,9 @@ Hello, {{ user }}
 {% else %}
     <p>No articles are available.</p>
 {% endif %}
+
+
+<hr>
+<u>Optional region</u>.
+<p>The list of id user-objects on which the current user is following:
+{{ subscribe_list }}</p>
