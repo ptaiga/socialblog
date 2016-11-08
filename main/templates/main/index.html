@@ -1,21 +1,28 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
 
-Hello, {{ user }}. 
-Your subscribe: 
-{% for user in users %}
-{{ user.username }},
-{% endfor %}
+Hello, {{ user }}! 
+
+<h3><u>Your feed</u>:</h3>
 
 {% if post_list %}
     <ul>
     {% for article in post_list %}
-        <li><a href="{% url 'main:post' article.id %}">{{ article.header }}</a></li>
+        <li><a href="{% url 'main:post' article.id %}">{{ article.header }}</a> <i>({{ article.user.username }}, {{ article.pub_date }})</i></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No articles are available.</p>
 {% endif %}
+
+<h3><u>Your subscribe</u>:</h3> 
+<ul>
+{% for user in users %}
+  <li>{{ user.username }}</li>
+{% endfor %}
+</ul>
+
+Also you can <a href="{% url 'main:new_post' %}">add new article</a>.
 
 
 <hr>
