@@ -15,15 +15,16 @@ Hello, {{ user }}!
     <p>No articles are available.</p>
 {% endif %}
 
-<h3><u>Your subscribe</u>:</h3> 
-<ul>
-{% for user in users %}
-  <li>{{ user.username }}</li>
-{% endfor %}
-</ul>
+<p>Also you can <a href="{% url 'main:new_post' %}">add new article</a>.</p>
 
-Also you can <a href="{% url 'main:new_post' %}">add new article</a>.
+<h3><u>Your subscribtions</u>:</h3> 
+{% if subscriptions %}
+  {{ subscriptions }}.
+{% else %}
+  <p>You are not following any users.</p>
+{% endif %}
 
+<p>You can <a href="{% url 'main:subscriptions' %}">change subscriptions list</a>.</p>
 
 <hr>
 <u>Optional region</u>.

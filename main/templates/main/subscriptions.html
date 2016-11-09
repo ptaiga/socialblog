@@ -1,0 +1,28 @@
+<h3>List of subscriptions</h3>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'main:subscribe' %}" method="post">
+{% csrf_token %}
+{% if subscriptions %}
+  <p>{{ user.username }}, you have the following subscriptions:</p>
+  {% for user in subscriptions %}
+      <input type="checkbox" name="user{{ user.id }}" id="user{{ user.id }}" value="{{ user.id }}" checked />
+      <label for="user{{ user.id }}">{{ user.username }}</label><br />
+  {% endfor %}
+{% else %}
+  {{ user.username }}, your list of subscriptions is empty.
+{% endif %}
+
+{% if users %}
+  <p>You can subscribe to the following users:</p>
+  {% for user in users %}
+    <input type="checkbox" name="user{{ user.id }}" id="user{{ user.id }}" value="{{ user.id }}" />
+    <label for="user{{ user.id }}">{{ user.username }}</label><br />
+  {% endfor %}
+  <br>
+{% else %}
+  <p>At the moment you followed for all users of the service.</p>
+{% endif %}
+<input type="submit" value="Save and return" />
+</form>

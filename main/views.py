@@ -9,13 +9,16 @@ from .models import Article
 
 def index(request):
     subscribe_list = request.user.subscriber.subscribe_list.split(',')
-    users = User.objects.filter(id__in = subscribe_list)
-    post_list = Article.objects.filter(user__in=users).order_by('-pub_date')
+    if (subscribe_list == ['']): subscribe_list = []
+    subscriptions = User.objects.filter(id__in = subscribe_list)
+    post_list = Article.objects.filter(user__in=subscriptions)\
+                                .order_by('-pub_date')
+    subscriptions_name = ', '.join([user.username for user in subscriptions])
     context = {
         'post_list': post_list,
         'user': request.user,
         'subscribe_list': subscribe_list,
-        'users': users
+        'subscriptions': subscriptions_name,
     }
     return render(request, 'main/index.html', context)
 
@@ -37,6 +40,35 @@ def add_post(request):
         return HttpResponseRedirect(reverse('main:index', args=()))
     else:
         return HttpResponse('Something went wrong')
+
+def subscriptions(request):
+    subscribe_list = request.user.subscriber.subscribe_list.split(',')
+    if (subscribe_list == ['']): subscribe_list = []
+    subscriptions = User.objects.filter(id__in = subscribe_list)
+    users = User.objects.all().exclude(id__in = subscribe_list)
+    context = {
+        'users': users,
+        'subscriptions': subscriptions,
+        'user': request.user,
+    }
+    return render(request, 'main/subscriptions.html', context)
+
+def subscribe(request):
+    if (request.method == 'POST'):
+        subscriber = request.user.subscriber
+        subscribe = []
+        keys = request.POST
+        for key in keys:
+            if (key[0:4] == 'user'):
+                subscribe.append(keys[key])
+        #subscribe_list = ','.join(subscribe)
+        #return HttpResponse(user.subscriber.subscribe_list + ' -> ' + subscribe_list)   
+        subscriber.subscribe_list = ','.join(subscribe)
+        subscriber.save()
+        return HttpResponseRedirect(reverse('main:index', args=()))
+    else:
+        return HttpResponse('Something went wrong')
+
 
 def users(request):
     user_list = User.objects.all()
