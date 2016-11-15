@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^subscribe/$', views.subscribe, name='subscribe'),
 
     url(r'^users/$', views.users, name='users'),
+    url(r'^send_mail/$', views.send_mail, name='send_mail'),
 ]

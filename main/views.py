@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils import timezone
+from django.core import mail
 
 from django.contrib.auth.models import User
 
@@ -37,9 +38,31 @@ def add_post(request):
             content=request.POST['content'],\
             pub_date=timezone.now())
         a.save()
+        send_alert(request.user, a)
         return HttpResponseRedirect(reverse('main:index', args=()))
     else:
         return HttpResponse('Something went wrong')
+
+def send_alert(author, article):
+    users = []
+    for user in User.objects.all():
+        if str(author.id) in user.subscriber.subscribe_list:
+            users.append(user)
+    subject = 'The article is added: "{0}"'.format(article.header)
+    from_email = 'info@ti-tech.ru'
+    # to = 'ptaiga@gmail.com'
+    with mail.get_connection() as connection:
+        for user in users:
+            body = '{0}, you received this email '\
+                    'because the article "{1}" is added by {2}. '\
+                    'Link - http://localhost:8000/main/{3}'\
+                    .format(user.first_name, 
+                        article.header, 
+                        author.username,
+                        article.id)
+            to = user.email
+            mail.EmailMessage(subject, body, from_email, [to],
+                                connection=connection).send()
 
 def subscriptions(request):
     subscribe_list = request.user.subscriber.subscribe_list.split(',')
@@ -75,3 +98,13 @@ def users(request):
     return render(request, 'main/users.html', {'user_list': user_list})
     #output = ', '.join([u.username + ': ' + str(u.pk) for u in user_list])
     #return HttpResponse(output)
+
+def send_mail(request):
+    subject = 'Test email'
+    body = 'This is the test email.'
+    from_email = 'info@ti-tech.ru'
+    to = 'ptaiga@gmail.com'
+    with mail.get_connection() as connection:
+        mail.EmailMessage(subject, body, from_email, [to],
+                          connection=connection).send()
+    return HttpResponse('Sent!')
