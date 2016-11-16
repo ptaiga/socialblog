@@ -15,10 +15,11 @@ def index(request):
     post_list = Article.objects.filter(user__in=subscriptions)\
                                 .order_by('-pub_date')
     subscriptions_name = ', '.join([user.username for user in subscriptions])
+    followers_list = get_followers(request.user.id)
     context = {
         'post_list': post_list,
         'user': request.user,
-        'subscribe_list': subscribe_list,
+        'followers_list': followers_list,
         'subscriptions': subscriptions_name,
     }
     return render(request, 'main/index.html', context)
@@ -43,16 +44,20 @@ def add_post(request):
     else:
         return HttpResponse('Something went wrong')
 
-def send_alert(author, article):
+def get_followers(user_id):
     users = []
     for user in User.objects.all():
-        if str(author.id) in user.subscriber.subscribe_list:
+        if str(user_id) in user.subscriber.subscribe_list:
             users.append(user)
+    return users
+
+def send_alert(author, article):
+    followers = get_followers(author.id)
     subject = 'The article is added: "{0}"'.format(article.header)
     from_email = 'info@ti-tech.ru'
     # to = 'ptaiga@gmail.com'
     with mail.get_connection() as connection:
-        for user in users:
+        for user in followers:
             body = '{0}, you received this email '\
                     'because the article "{1}" is added by {2}. '\
                     'Link - http://localhost:8000/main/{3}'\
