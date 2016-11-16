@@ -2,11 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils import timezone
-from django.core import mail
 
 from django.contrib.auth.models import User
 
 from .models import Article
+from .functions import get_followers, send_alert
 
 def index(request):
     subscribe_list = request.user.subscriber.subscribe_list.split(',')
@@ -43,31 +43,6 @@ def add_post(request):
         return HttpResponseRedirect(reverse('main:index', args=()))
     else:
         return HttpResponse('Something went wrong')
-
-def get_followers(user_id):
-    users = []
-    for user in User.objects.all():
-        if str(user_id) in user.subscriber.subscribe_list:
-            users.append(user)
-    return users
-
-def send_alert(author, article):
-    followers = get_followers(author.id)
-    subject = 'The article is added: "{0}"'.format(article.header)
-    from_email = 'info@ti-tech.ru'
-    # to = 'ptaiga@gmail.com'
-    with mail.get_connection() as connection:
-        for user in followers:
-            body = '{0}, you received this email '\
-                    'because the article "{1}" is added by {2}. '\
-                    'Link - http://localhost:8000/main/{3}'\
-                    .format(user.first_name, 
-                        article.header, 
-                        author.username,
-                        article.id)
-            to = user.email
-            mail.EmailMessage(subject, body, from_email, [to],
-                                connection=connection).send()
 
 def subscriptions(request):
     subscribe_list = request.user.subscriber.subscribe_list.split(',')
