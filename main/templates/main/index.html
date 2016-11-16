@@ -1,32 +1,38 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
 
-Hello, {{ user }}! 
+<div>Hello, {{ user }}!</div> 
 
-<h3><u>Your feed</u>:</h3>
+<div class="feed">
+  <h3><u>Your feed</u>:</h3>
 
-{% if post_list %}
-    <ul>
-    {% for article in post_list %}
-        <li><a href="{% url 'main:post' article.id %}">{{ article.header }}</a> <i>({{ article.user.username }}, {{ article.pub_date }})</i></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No articles are available.</p>
-{% endif %}
+  {% if post_list %}
+      <ul>
+      {% for article in post_list %}
+          <li><a href="{% url 'main:post' article.id %}">{{ article.header }}</a> <i>({{ article.user.username }}, {{ article.pub_date }})</i></li>
+      {% endfor %}
+      </ul>
+  {% else %}
+      <p>No articles are available.</p>
+  {% endif %}
 
-<p>Also you can <a href="{% url 'main:new_post' %}">add new article</a>.</p>
+  <p>Also you can <a href="{% url 'main:new_post' %}">add new article</a>.</p>
+</div>
 
-<h3><u>Your subscribtions</u>:</h3> 
-{% if subscriptions %}
-  {{ subscriptions }}.
-{% else %}
-  <p>You are not following any users.</p>
-{% endif %}
+<div class="subscription">
+  <h3><u>Your subscribtions</u>:</h3> 
+  {% if subscriptions %}
+    {{ subscriptions }}.
+  {% else %}
+    <p>You are not following any users.</p>
+  {% endif %}
 
-<p>You can <a href="{% url 'main:subscriptions' %}">change subscriptions list</a>.</p>
+  <p>You can <a href="{% url 'main:subscriptions' %}">change subscriptions list</a>.</p>
+</div>
 
-<hr>
-<u>Optional region</u>.
-<p>The list of id user-objects on which the current user is following:
-{{ subscribe_list }}</p>
+<div class="optional">
+  <hr>
+  <u>Optional region</u>.
+  <p>The list of id user-objects on which the current user is following:
+  {{ subscribe_list }}</p>
+</div>

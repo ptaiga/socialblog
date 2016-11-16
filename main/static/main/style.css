@@ -1,13 +1,34 @@
-body {
+html {
   background: white url('img/background.jpg') no-repeat;
   background-size: cover;
-  color: white;
+  /* color: white; */
+}
+
+body {
+  width: 900px;
+  background-color: white;
+  opacity: 0.9;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 a {
-  color: white;
+  /* color: white; */
 }
 
 .content {
   border: 1px solid black;
+}
+
+.feed {
+  float: left;
+  margin-right: 50px;
+}
+
+.subscription {
+
+}
+
+.optional {
+  clear:both;
 }
