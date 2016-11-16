@@ -9,8 +9,8 @@ def get_followers(user_id):
             users.append(user)
     return users
 
-def send_alert(author, article):
-    followers = get_followers(author.id)
+def send_alert(article):
+    followers = get_followers(article.user.id)
     subject = 'The article is added: "{0}"'.format(article.header)
     from_email = 'info@ti-tech.ru'
     # to = 'ptaiga@gmail.com'
@@ -21,7 +21,7 @@ def send_alert(author, article):
                     'Link - http://localhost:8000/main/{3}'\
                     .format(user.first_name, 
                         article.header, 
-                        author.username,
+                        article.user.username,
                         article.id)
             to = user.email
             mail.EmailMessage(subject, body, from_email, [to],

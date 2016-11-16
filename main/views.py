@@ -39,7 +39,7 @@ def add_post(request):
             content=request.POST['content'],\
             pub_date=timezone.now())
         a.save()
-        send_alert(request.user, a)
+        send_alert(a)
         return HttpResponseRedirect(reverse('main:index', args=()))
     else:
         return HttpResponse('Something went wrong')
