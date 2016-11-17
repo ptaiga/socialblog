@@ -1,3 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+
 The page for adding new post.
 
 <form action="{% url 'main:add_post' %}" method="post">

@@ -17,7 +17,8 @@ a {
 }
 
 .content {
-  border: 1px solid black;
+  border: 1px dotted;
+  padding: 20px;
 }
 
 .feed {

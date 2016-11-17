@@ -2,8 +2,15 @@
 <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
 
 <h1>{{ article.header }}</h1>
-<i>Published &ndash; {{ article.pub_date }}</i>
-<br /><br />
+<i>Published &ndash; {{ article.pub_date }} by {{ article.user.username }}</i>
+<br><br>
+{% if article.id in readed_articles %}
+  <a href="{% url 'main:post_mark' article.id 'unread' %}">Mark unreaded and return</a>
+{% else %}
+  <a href="{% url 'main:post_mark' article.id 'read' %}">Mark readed and return</a>
+{% endif %}
+  | <a href="{% url 'main:index' %}">Return without marking</a>
 <div class="content">
   {{ article.content }}
+  {% lorem 3 p %}
 </div>

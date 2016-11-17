@@ -5,11 +5,18 @@
 
 <div class="feed">
   <h3><u>Your feed</u>:</h3>
-
   {% if post_list %}
       <ul>
       {% for article in post_list %}
-          <li><a href="{% url 'main:post' article.id %}">{{ article.header }}</a> <i>({{ article.user.username }}, {{ article.pub_date }})</i></li>
+          <li>
+            <a href="{% url 'main:post' article.id %}">
+              {% if article.id in readed_articles %}
+                  + {{ article.header }}
+              {% else %}
+                <strong>{{ article.header }}</strong>
+              {% endif %}
+            </a> <i>({{ article.user.username }}, {{ article.pub_date }})</i>
+          </li>
       {% endfor %}
       </ul>
   {% else %}
@@ -32,7 +39,7 @@
 
 <div class="optional">
   <hr>
-  <u>Optional region</u>.
-  <p>The list of followers:
-  {{ followers_list }}</p>
+  <u>Optional region</u>
+  <p>Readed articles id: {{ readed_articles }}</p>
+  <p>The list of followers: {{ followers_list }}</p>
 </div>

@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^post/add/$', views.add_post, name='add_post'),
     url(r'^subscriptions/$', views.subscriptions, name='subscriptions'),
     url(r'^subscribe/$', views.subscribe, name='subscribe'),
+    url(r'^(?P<post_id>[0-9]+)/(?P<action>(read|unread))/$', views.post_mark, name='post_mark'),
 
     url(r'^users/$', views.users, name='users'),
     url(r'^send_mail/$', views.send_mail, name='send_mail'),
