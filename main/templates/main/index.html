@@ -1,45 +1,46 @@
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+{% extends "main/base.html" %}
 
-<div>Hello, {{ user }}!</div> 
+{% block content %}
+  <div>Hello, {{ user }}!</div> 
 
-<div class="feed">
-  <h3><u>Your feed</u>:</h3>
-  {% if post_list %}
-      <ul>
-      {% for article in post_list %}
-          <li>
-            <a href="{% url 'main:post' article.id %}">
-              {% if article.id in readed_articles %}
-                  + {{ article.header }}
-              {% else %}
-                <strong>{{ article.header }}</strong>
-              {% endif %}
-            </a> <i>({{ article.user.username }}, {{ article.pub_date }})</i>
-          </li>
-      {% endfor %}
-      </ul>
-  {% else %}
-      <p>No articles are available.</p>
-  {% endif %}
+  <div class="feed">
+    <h3><u>Your feed</u>:</h3>
+    {% if post_list %}
+        <ul>
+        {% for article in post_list %}
+            <li>
+              <a href="{% url 'main:post' article.id %}">
+                {% if article.id in readed_articles %}
+                    + {{ article.header }}
+                {% else %}
+                  <strong>{{ article.header }}</strong>
+                {% endif %}
+              </a> <i>({{ article.user.username }}, {{ article.pub_date }})</i>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No articles are available.</p>
+    {% endif %}
 
-  <p>Also you can <a href="{% url 'main:new_post' %}">add new article</a>.</p>
-</div>
+    <p>Also you can <a href="{% url 'main:new_post' %}">add new article</a>.</p>
+  </div>
 
-<div class="subscription">
-  <h3><u>Your subscribtions</u>:</h3> 
-  {% if subscriptions %}
-    {{ subscriptions }}.
-  {% else %}
-    <p>You are not following any users.</p>
-  {% endif %}
+  <div class="subscription">
+    <h3><u>Your subscribtions</u>:</h3> 
+    {% if subscriptions %}
+      {{ subscriptions }}.
+    {% else %}
+      <p>You are not following any users.</p>
+    {% endif %}
 
-  <p>You can <a href="{% url 'main:subscriptions' %}">change subscriptions list</a>.</p>
-</div>
+    <p>You can <a href="{% url 'main:subscriptions' %}">change subscriptions list</a>.</p>
+  </div>
 
-<div class="optional">
-  <hr>
-  <u>Optional region</u>
-  <p>Readed articles id: {{ readed_articles }}</p>
-  <p>The list of followers: {{ followers_list }}</p>
-</div>
+  <div class="optional">
+    <hr>
+    <u>Optional region</u>
+    <p>Readed articles id: {{ readed_articles }}</p>
+    <p>The list of followers: {{ followers_list }}</p>
+  </div>
+{% endblock %}

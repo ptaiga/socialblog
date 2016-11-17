@@ -1,11 +1,14 @@
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+{% extends "main/base.html" %}
 
-The page for adding new post.
+{% block content %}
 
-<form action="{% url 'main:add_post' %}" method="post">
-  {% csrf_token %}
-  <p>Header: <br><input type="text" name="header" size="50" required /></p>
-  <p>Content: <br><textarea name="content" rows="10" cols="50" required></textarea></p>
-  <p><input type="submit" value="Add" /></p>
-</form>
+  The page for adding new post.
+
+  <form action="{% url 'main:add_post' %}" method="post">
+    {% csrf_token %}
+    <p>Header: <br><input type="text" name="header" size="50" required /></p>
+    <p>Content: <br><textarea name="content" rows="10" cols="50" required></textarea></p>
+    <p><input type="submit" value="Add" /></p>
+  </form>
+
+{% endblock %}
