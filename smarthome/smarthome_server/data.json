@@ -1,0 +1,19 @@
+{
+    "air_conditioner": false,
+    "bedroom_light": false,
+    "bathroom_light": false,
+    "curtains": "open",
+    "boiler": false,
+    "cold_water": false,
+    "hot_water": false,
+    "washing_machine": "off",
+    "bedroom_temperature": 17,
+    "smoke_detector": false,
+    "bedroom_presence": false,
+    "bedroom_motion": false,
+    "outdoor_light": 30,
+    "boiler_temperature": 90,
+    "bathroom_presence": false,
+    "bathroom_motion": false,
+    "leak_detector": true
+}

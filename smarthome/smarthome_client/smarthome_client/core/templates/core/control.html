@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <title>Управление умным домом</title>
+    <style>
+        label {
+            min-width: 300px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'form' %}">
+    Smart Home
+  </a>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header">
+                    Настройки
+                </div>
+
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" class="btn btn-primary" value="Сохранить"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header">
+                    Текущие значения
+                </div>
+
+                <div class="card-body">
+                    {% for key, value in data.items %}
+                        <div class="row">
+                            <div class="col-sm">
+                                <strong>{{ key }}</strong>
+                            </div>
+                            <div class="col-sm">
+                                {{ value }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+</html>

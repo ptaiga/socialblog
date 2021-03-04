@@ -83,7 +83,7 @@ $ heroku ps:scale worker=1
 
 To stop it you need to perform: `$ heroku ps:scale worker=0`
 
-This is all you need to launch the _Bot_. At the same time, __the free features of *Heroke* will be enough and you will not have to pay__.
+This is all you need to launch the _Bot_. At the same time, __the free features of *Heroku* will be enough and you will not have to pay__.
 
 
 ## Files

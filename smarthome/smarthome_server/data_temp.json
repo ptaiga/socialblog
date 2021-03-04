@@ -1,0 +1,91 @@
+{
+    "air_conditioner": false,
+    "bedroom_light": true,
+    "bathroom_light": false,
+    "curtains": "open",
+    "boiler": true,
+    "cold_water": false,
+    "hot_water": false,
+    "washing_machine": "off",
+    "bedroom_temperature": 20,
+    "smoke_detector": false,
+    "bedroom_presence": false,
+    "bedroom_motion": false,
+    "outdoor_light": 30,
+    "boiler_temperature": 70,
+    "bathroom_presence": false,
+    "bathroom_motion": false,
+    "leak_detector": true
+}
+{
+    "data": [
+        {
+            "name": "air_conditioner",
+            "value": false
+        },
+        {
+            "name": "bedroom_light",
+            "value": false
+        },
+        {
+            "name": "bathroom_light",
+            "value": false
+        },
+        {
+            "name": "curtains",
+            "value": "open"
+        },
+        {
+            "name": "boiler",
+            "value": false
+        },
+        {
+            "name": "cold_water",
+            "value": false
+        },
+        {
+            "name": "hot_water",
+            "value": false
+        },
+        {
+            "name": "washing_machine",
+            "value": "off"
+        },
+        {
+            "name": "bedroom_temperature",
+            "value": 20
+        },
+        {
+            "name": "smoke_detector",
+            "value": false
+        },
+        {
+            "name": "bedroom_presence",
+            "value": false
+        },
+        {
+            "name": "bedroom_motion",
+            "value": false
+        },
+        {
+            "name": "outdoor_light",
+            "value": 30
+        },
+        {
+            "name": "boiler_temperature",
+            "value": null
+        },
+        {
+            "name": "bathroom_presence",
+            "value": false
+        },
+        {
+            "name": "bathroom_motion",
+            "value": false
+        },
+        {
+            "name": "leak_detector",
+            "value": false
+        }
+    ]
+}
