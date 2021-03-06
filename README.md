@@ -9,3 +9,5 @@ This repository contains code examples of projects written using **_Python_** an
 - [`/geotelebot`](https://github.com/ptaiga/examples/tree/master/geotelebot) &mdash; Prototype of a working _Telegram Bot_. Helps the user to save and view interesting places (name, address, geo-position and photo). When sending a location, it shows which of these places are within a 500-meter radius. The project is written in _Python_, prepared for rolling out to _Heroku_-hosting, and uses _PostgreSQL_ to save data.
 
 - [`/smarthome`](https://github.com/ptaiga/examples/tree/master/smarthome) &mdash; An example of the interaction between _Smart Home_ systems that supports real-time state configuration. The application is written in _Python_. The following tools are used: _Django_, _SQLite_, _Celery_, _Redis_.
+
+- [`/cipher`](https://github.com/ptaiga/examples/tree/master/cipher) &mdash; Implementation of the _Caesar_ cipher and its two variations _Rot13_ and _Vigenere_. The performance of each of the ciphers is checked by using unit testing.
