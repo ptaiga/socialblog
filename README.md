@@ -1,6 +1,6 @@
 # Examples of code
 
-This repository contains code examples of projects written using **_Python_** and other related technologies: *Django*, *HTML*, *CSS*, *SQLite*, *PostgreSQL*, *Redis*, *Celery*. Here is just a brief description of each project. For more information, go to the appropriate folder.
+This repository contains code examples of projects written using **_Python_** and other related technologies: *Django*, *HTML*, *CSS*, *SQLite*, *PostgreSQL*, *Redis*, *Celery*, * Git*. Here is just a brief description of each project. For more information, go to the appropriate folder.
 
 **Note**. If the project contains a `projectname-git.zip`-archive (the full contents of the project and `.git`-folder), you can download and unzip it. As a result you will get the files and commit history of this project.
 
@@ -13,3 +13,5 @@ This repository contains code examples of projects written using **_Python_** an
 - [`/cipher`](https://github.com/ptaiga/examples/tree/master/cipher) &mdash; Implementation of the _Caesar_ cipher and its two variations _Rot13_ and _Vigenere_. The performance of each of the ciphers is checked by using unit testing.
 
 - [`/somemart`](https://github.com/ptaiga/examples/tree/master/somemart) &mdash; Realization of a simple API for an online store: add a product, add a review to the product, get a product description and all reviews for it. All actions are performed via _GET_ or _POST_ requests using _JSON_. Unauthorized users can get a product description or add a review to the product. Admin's rights allow to add new products. User authentication is performed via [_HTTP Basic Auth_](https://en.wikipedia.org/wiki/Basic_access_authentication). Data validation is performed using `django.forms`, `jsonschema` and `marshmallow`. The project is made using _Django_. For testing used `pytest`.
+
+- [`/herokuapp`](https://github.com/ptaiga/examples/tree/master/herokuapp) &mdash; Step-by-step guide to creating a simple web application that shows the number of page views in _Python_ and _Django_ using _Redis_. It also shows how to roll out the application to _Heroku_ hosting using _Git_.
