@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "305288f39a5204f9fefe314337b9d35b9eba69826477e41436c3ee2e024f9d17"
+            "sha256": "2b0b2fc81d9a3fdf1c66b47430b9114d604bb24b348795183bd7a691cf92bb8d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -53,11 +53,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:84f370f6acedbe1f3c41e1a02de44ac206efda3355e427139ecb785b5f596d80",
-                "sha256:e8fe3c2b2212dce6126becab7a693157f1a441a07b62ec994c046c76af5bb66d"
+                "sha256:0eaca08f236bf502a9773e53623f766cc3ceee6453cc41e6de1c8b80f07d2364",
+                "sha256:c9c994f5e0a032cbd45089798b52e4080f4dea7241c58e3e0636c54146480bb4"
             ],
             "index": "pypi",
-            "version": "==2.2.13"
+            "version": "==2.2.18"
         },
         "idna": {
             "hashes": [
@@ -68,11 +68,11 @@
         },
         "importlib-metadata": {
             "hashes": [
-                "sha256:24499ffde1b80be08284100393955842be4a59c7c16bbf2738aad0e464a8e0aa",
-                "sha256:c6af5dbf1126cd959c4a8d8efd61d4d3c83bddb0459a17e554284a077574b614"
+                "sha256:742add720a20d0467df2f444ae41704000f50e1234f46174b51f9c6031a1bd71",
+                "sha256:b74159469b464a99cb8cc3e21973e4d96e05d3024d337313fedb618a6e86e6f4"
             ],
             "markers": "python_version < '3.8'",
-            "version": "==3.7.0"
+            "version": "==3.7.3"
         },
         "jsonschema": {
             "hashes": [
@@ -261,10 +261,10 @@
         },
         "faker": {
             "hashes": [
-                "sha256:90b69e9e05d622edb2fa5ebfda7bef41c88675cace85e72689fde5b8723d00a3",
-                "sha256:da395fe545f40d4366b82b1a02448847a4586bd2b28af393b3edbd1e45d1e0fc"
+                "sha256:60a7263104ef7a14ecfe2af1142d53924aa534ccec85cea82bb67b2b32f84421",
+                "sha256:f43ac743c34affb1c7fccca8b06450371cd482b6ddcb4110e420acb24356e70b"
             ],
-            "version": "==6.5.0"
+            "version": "==6.6.2"
         },
         "idna": {
             "hashes": [
