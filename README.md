@@ -17,3 +17,5 @@ This repository contains code examples of projects written using **_Python_** an
 - [`/herokuapp`](https://github.com/ptaiga/examples/tree/master/herokuapp) &mdash; Step-by-step guide to creating a simple web application that shows the number of page views in _Python_ and _Django_ using _Redis_. It also shows how to roll out the application to _Heroku_ hosting using _Git_.
 
 - [`/gameoflife`](https://github.com/ptaiga/examples/tree/master/gameoflife) &mdash; Console utility for demonstrating the famous _"Conway's Game of Life"_. The implementation is made using the __Python__ language and _OOP_ principles.
+
+- [`/asyncsocket`](https://github.com/ptaiga/examples/tree/master/asyncsocket) &mdash; A system for collecting and storing metrics based on a client-server architecture. Examples of such systems are _Graphite_ and _InfluxDB_. The clients and server communicate with each other over a simple text protocol via _TCP-sockets_. To implement an asynchronous server, use the following popular _Python_-libriry: __asyncio__. To implement a clients, use the other popular _Python_-libriry: _socket_.
